@@ -1,6 +1,6 @@
-# NEXBYTE DZ — Premium Computer Store for Algeria
+# YOUPPI INFO — Premium Computer Store for Algeria
 
-**NEXBYTE DZ** is a production-grade, multilingual e-commerce web platform engineered specifically for the Algerian computer and technology hardware market. It specializes in pre-owned laptops, certified refurbished business workstations, custom gaming rigs, graphics cards, and essential tech accessories.
+**YOUPPI INFO** is a production-grade, multilingual e-commerce web platform engineered specifically for the Algerian computer and technology hardware market. It specializes in pre-owned laptops, certified refurbished business workstations, custom gaming rigs, graphics cards, and essential tech accessories.
 
 ---
 
@@ -8,7 +8,7 @@
 
 ### 1. Brand Identity & Visual Aesthetic
 - **Visual Direction**: Premium dark tech aesthetic (`#07090D` background, `#10141C` elevated cards, `#1677FF` electric blue primary, `#32D5FF` cyan accent).
-- **Geometric NB Monogram**: Distinctive brand identity and responsive typography with Plus Jakarta Sans & Tajawal (Arabic).
+- **Geometric YI Monogram**: Distinctive brand identity and responsive typography with Plus Jakarta Sans & Tajawal (Arabic).
 - **Zero-Pill Discipline & Anti-Slop**: Clean typography, unboxed text metadata with `·` separators, tabular figures for all DZD currency prices, no artificial countdowns.
 
 ### 2. WhatsApp-First Sales Funnel
