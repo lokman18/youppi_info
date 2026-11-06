@@ -146,7 +146,8 @@ export const AdminInventoryPage: React.FC = () => {
                     </tr>
                   </thead>
                   <tbody className="divide-y divide-slate-50">
-                    {products.map((p) => (
+                    {products.length > 0 ? (
+                      products.map((p) => (
                       <tr key={p.id} className="hover:bg-blue-50/20 transition-colors group">
                         <td className="px-5 py-3.5 font-mono font-bold text-slate-800">
                           {p.sku}
@@ -210,7 +211,24 @@ export const AdminInventoryPage: React.FC = () => {
                           </div>
                         </td>
                       </tr>
-                    ))}
+                    ))
+                  ) : (
+                    <tr>
+                      <td colSpan={7} className="px-6 py-16 text-center">
+                        <div className="space-y-3">
+                          <div className="w-12 h-12 rounded-2xl bg-slate-100 flex items-center justify-center mx-auto">
+                            <Boxes className="w-6 h-6 text-slate-400" />
+                          </div>
+                          <p className="text-sm text-slate-500 font-medium">
+                            {language === 'ar' ? 'لا توجد منتجات في المخزن حالياً.' : 'Aucun produit en stock actuellement.'}
+                          </p>
+                          <p className="text-xs text-slate-400">
+                            {language === 'ar' ? 'أضف منتجات جديدة إلى الكتالوج للبدء في إدارة وتتبع المخزون.' : 'Ajoutez des matériels au catalogue pour commencer le suivi d\'inventaire.'}
+                          </p>
+                        </div>
+                      </td>
+                    </tr>
+                  )}
                   </tbody>
                 </table>
               </div>
@@ -241,7 +259,8 @@ export const AdminInventoryPage: React.FC = () => {
                   </tr>
                 </thead>
                 <tbody className="divide-y divide-slate-50">
-                  {movements.map((m) => (
+                  {movements.length > 0 ? (
+                    movements.map((m) => (
                     <tr key={m.id} className="hover:bg-blue-50/20 transition-colors">
                       <td className="px-5 py-3.5 font-mono text-slate-500 whitespace-nowrap">
                         {new Date(m.createdAt).toLocaleString()}
@@ -284,7 +303,24 @@ export const AdminInventoryPage: React.FC = () => {
                         {m.createdBy}
                       </td>
                     </tr>
-                  ))}
+                  ))
+                ) : (
+                  <tr>
+                    <td colSpan={8} className="px-6 py-16 text-center">
+                      <div className="space-y-3">
+                        <div className="w-12 h-12 rounded-2xl bg-slate-100 flex items-center justify-center mx-auto">
+                          <History className="w-6 h-6 text-slate-400" />
+                        </div>
+                        <p className="text-sm text-slate-500 font-medium">
+                          {language === 'ar' ? 'لا توجد حركات مخزون مسجلة حتى الآن.' : 'Aucun mouvement de stock enregistré pour l\'instant.'}
+                        </p>
+                        <p className="text-xs text-slate-400">
+                          {language === 'ar' ? 'عمليات الدخول والخروج والبيع والاحتياط ستظهر هنا تلقائياً.' : 'Les réceptions, sorties et ajustements apparaîtront ici automatiquement.'}
+                        </p>
+                      </div>
+                    </td>
+                  </tr>
+                )}
                 </tbody>
               </table>
             </div>

@@ -1,19 +1,19 @@
 import { AdminUser } from '../types';
 
-const ADMIN_STORAGE_KEY = 'nexbyte_admin_session';
-const ADMIN_CREDENTIALS_KEY = 'nexbyte_admin_creds';
-const CLERK_CREDENTIALS_KEY = 'nexbyte_clerk_creds';
+const ADMIN_STORAGE_KEY = 'youppi_admin_session';
+const ADMIN_CREDENTIALS_KEY = 'youppi_admin_creds';
+const CLERK_CREDENTIALS_KEY = 'youppi_clerk_creds';
 
 // Default initial admin credentials (can be updated from dashboard)
 const DEFAULT_ADMIN_CREDS = {
   username: 'admin',
-  passwordHash: 'nexbyte_dz_admin2026',
+  passwordHash: 'youppi_admin2026',
 };
 
 // Default stock clerk credentials (enters and exits stock only)
 const DEFAULT_CLERK_CREDS = {
   username: 'stock',
-  passwordHash: 'nexbyte_stock2026',
+  passwordHash: 'youppi_stock2026',
 };
 
 class AuthService {

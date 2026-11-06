@@ -122,36 +122,6 @@ export const HomePage: React.FC = () => {
     }
   };
 
-  const testimonials = [
-    {
-      name: 'Riad Benmansour',
-      role: 'Développeur Full-Stack & Gamer',
-      wilaya: '16 - Alger',
-      avatar: 'https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?w=100&auto=format&fit=crop&q=80',
-      rating: 5,
-      product: 'Lenovo ThinkPad T14 Gen 2',
-      text: 'Commande reçue en 24h avec Yalidine. Châssis dans un état comme neuf, pâte thermique visiblement neuve. Les scores Cinebench confirment la santé du processeur à 100%. Merci pour votre sérieux !',
-    },
-    {
-      name: 'Nassim Bouzid',
-      role: 'Créateur de contenu 3D',
-      wilaya: '31 - Oran',
-      avatar: 'https://images.unsplash.com/photo-1570295999919-56ceb5ecca61?w=100&auto=format&fit=crop&q=80',
-      rating: 5,
-      product: 'Tour Custom Ryzen 7 & RTX 4070',
-      text: 'Machine monstrueuse ! Montage ultra-propre, câble management impeccable. Les températures ne dépassent jamais 65°C en plein rendu Blender. YOUPPI INFO est le meilleur magasin hardware d’Algérie.',
-    },
-    {
-      name: 'Leïla Cherfaoui',
-      role: 'Architecte d’intérieur',
-      wilaya: '25 - Constantine',
-      avatar: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100&auto=format&fit=crop&q=80',
-      rating: 5,
-      product: 'Dell Latitude Carbon Fiber',
-      text: 'Le service client sur WhatsApp a répondu à toutes mes questions techniques en quelques minutes avec photos réelles de l’ordinateur. Livraison soignée et facture en règle.',
-    },
-  ];
-
   return (
     <div className="space-y-16 lg:space-y-24 pb-20 overflow-x-hidden">
       
@@ -423,15 +393,29 @@ export const HomePage: React.FC = () => {
           </Link>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-          {featuredProducts.map((product) => (
-            <ProductCard
-              key={product.id}
-              product={product}
-              onQuickView={(p) => setQuickViewProduct(p)}
-            />
-          ))}
-        </div>
+        {featuredProducts.length > 0 ? (
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            {featuredProducts.map((product) => (
+              <ProductCard
+                key={product.id}
+                product={product}
+                onQuickView={(p) => setQuickViewProduct(p)}
+              />
+            ))}
+          </div>
+        ) : (
+          <div className="p-12 text-center bg-white border border-slate-200/80 rounded-3xl space-y-3 shadow-xs">
+            <div className="w-12 h-12 rounded-2xl bg-blue-50 text-[#0075FF] flex items-center justify-center mx-auto">
+              <Laptop className="w-6 h-6" />
+            </div>
+            <h3 className="text-sm font-bold text-slate-800">
+              {language === 'ar' ? 'لا توجد منتجات مميزة معروضة حالياً' : 'Aucun produit vedette pour le moment'}
+            </h3>
+            <p className="text-xs text-slate-500 max-w-md mx-auto">
+              {language === 'ar' ? 'سيتم عرض المنتجات المميزة هنا فور إضافتها إلى المتجر.' : 'Les configurations vedettes apparaîtront ici dès leur enregistrement dans le catalogue.'}
+            </p>
+          </div>
+        )}
       </section>
 
       {/* 5. Trust & Quality Banner */}
@@ -502,68 +486,81 @@ export const HomePage: React.FC = () => {
           </Link>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-          {latestProducts.map((product) => (
-            <ProductCard
-              key={product.id}
-              product={product}
-              onQuickView={(p) => setQuickViewProduct(p)}
-            />
-          ))}
-        </div>
+        {latestProducts.length > 0 ? (
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            {latestProducts.map((product) => (
+              <ProductCard
+                key={product.id}
+                product={product}
+                onQuickView={(p) => setQuickViewProduct(p)}
+              />
+            ))}
+          </div>
+        ) : (
+          <div className="p-12 text-center bg-white border border-slate-200/80 rounded-3xl space-y-3 shadow-xs">
+            <div className="w-12 h-12 rounded-2xl bg-blue-50 text-[#0075FF] flex items-center justify-center mx-auto">
+              <Sparkles className="w-6 h-6" />
+            </div>
+            <h3 className="text-sm font-bold text-slate-800">
+              {language === 'ar' ? 'لا توجد منتجات جديدة في المخزون حالياً' : 'Aucun nouvel arrivage pour le moment'}
+            </h3>
+            <p className="text-xs text-slate-500 max-w-md mx-auto">
+              {language === 'ar' ? 'تابعونا لمشاهدة الدفعات والعتاد الجديد عند توفره.' : 'Les nouveaux articles révisés apparaîtront ici dès leur entrée en stock.'}
+            </p>
+          </div>
+        )}
       </section>
 
-      {/* 7. Customer Testimonials */}
+      {/* 7. Store Commitments & Service Guarantee */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
         <div className="text-center max-w-2xl mx-auto space-y-2">
           <div className="text-xs font-extrabold uppercase tracking-wider text-[#0075FF]">
-            La Communauté YOUPPI
+            {language === 'ar' ? 'خدماتنا والتزامنا' : 'Nos Engagements'}
           </div>
           <h2 className="text-2xl sm:text-3xl font-black text-slate-900 tracking-tight">
-            Ce que disent nos clients gamers & pros
+            {language === 'ar' ? 'تجربة شراء احترافية ومضمونة' : 'Une Expérience d’Achat Rigoureuse & Transparente'}
           </h2>
           <p className="text-xs sm:text-sm text-slate-500">
-            Plus de 12 000 commandes expédiées à travers toute l'Algérie avec une note moyenne de 4.9/5
+            {language === 'ar' ? 'نوفر لكم أفضل أجهزة الكمبيوتر وقطع الغيار مع اختبارات شاملة وضمان حقيقي.' : 'Matériel informatique rigoureusement contrôlé en atelier, devis clair et livraison dans toute l’Algérie.'}
           </p>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          {testimonials.map((testi, idx) => (
-            <motion.div
-              key={idx}
-              whileHover={{ y: -4 }}
-              className="p-6 rounded-3xl bg-white border border-slate-200/80 shadow-xs flex flex-col justify-between space-y-4"
-            >
-              <div className="space-y-3">
-                <div className="flex items-center gap-1 text-amber-400">
-                  {[...Array(testi.rating)].map((_, i) => (
-                    <Star key={i} className="w-4 h-4 fill-amber-400 text-amber-400" />
-                  ))}
-                </div>
-                <p className="text-xs sm:text-sm text-slate-700 leading-relaxed italic">
-                  « {testi.text} »
-                </p>
-              </div>
+          <div className="p-6 rounded-3xl bg-white border border-slate-200/80 shadow-xs space-y-3">
+            <div className="w-10 h-10 rounded-2xl bg-blue-100 text-[#0075FF] flex items-center justify-center">
+              <ShieldCheck className="w-5 h-5" />
+            </div>
+            <h3 className="text-sm font-bold text-slate-900">
+              {language === 'ar' ? 'فحص شامل واختبار الإجهاد' : 'Stress Tests Matériels 100%'}
+            </h3>
+            <p className="text-xs text-slate-600 leading-relaxed">
+              {language === 'ar' ? 'كل جهاز يتم اختباره ببرامج Cinebench و FurMark و MemTest للتأكد من سلامة المعالج والكرت والذاكرة.' : 'Chaque machine subit des benchmarks intensifs (Cinebench, FurMark) pour certifier ses performances et températures.'}
+            </p>
+          </div>
 
-              <div className="pt-4 border-t border-slate-100 flex items-center justify-between">
-                <div className="flex items-center gap-3">
-                  <img
-                    src={testi.avatar}
-                    alt={testi.name}
-                    className="w-10 h-10 rounded-full object-cover border border-slate-200"
-                  />
-                  <div>
-                    <h4 className="text-xs font-bold text-slate-900">{testi.name}</h4>
-                    <span className="text-[10px] text-slate-400 block">{testi.role} · {testi.wilaya}</span>
-                  </div>
-                </div>
+          <div className="p-6 rounded-3xl bg-white border border-slate-200/80 shadow-xs space-y-3">
+            <div className="w-10 h-10 rounded-2xl bg-emerald-100 text-emerald-600 flex items-center justify-center">
+              <Truck className="w-5 h-5" />
+            </div>
+            <h3 className="text-sm font-bold text-slate-900">
+              {language === 'ar' ? 'توصيل وتغليف مصفّح' : 'Expédition Sécurisée 58 Wilayas'}
+            </h3>
+            <p className="text-xs text-slate-600 leading-relaxed">
+              {language === 'ar' ? 'تغليف احترافي مضاد للصدمات مع خيار الدفع عند الاستلام بعد معاينة الطرد.' : 'Colis protégés avec cales anti-chocs. Paiement en espèces à la livraison avec suivi en temps réel.'}
+            </p>
+          </div>
 
-                <span className="text-[10px] bg-emerald-50 text-emerald-700 font-bold px-2 py-0.5 rounded-md flex items-center gap-1">
-                  <Check className="w-3 h-3" /> Vérifié
-                </span>
-              </div>
-            </motion.div>
-          ))}
+          <div className="p-6 rounded-3xl bg-white border border-slate-200/80 shadow-xs space-y-3">
+            <div className="w-10 h-10 rounded-2xl bg-green-100 text-[#25D366] flex items-center justify-center">
+              <MessageCircle className="w-5 h-5 text-[#25D366]" />
+            </div>
+            <h3 className="text-sm font-bold text-slate-900">
+              {language === 'ar' ? 'دعم فني سريع عبر واتساب' : 'Conseil & SAV Direct WhatsApp'}
+            </h3>
+            <p className="text-xs text-slate-600 leading-relaxed">
+              {language === 'ar' ? 'فريقنا متاح للإجابة على جميع استفساراتكم التقنية وإرسال صور وفيديوهات حقيقية للأجهزة.' : 'Échangez directement avec un technicien pour choisir le modèle adapté à votre budget et vos logiciels.'}
+            </p>
+          </div>
         </div>
       </section>
 

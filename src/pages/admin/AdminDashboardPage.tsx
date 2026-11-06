@@ -177,27 +177,41 @@ export const AdminDashboardPage: React.FC = () => {
               </Link>
             </div>
 
-            <div className="divide-y divide-slate-50">
-              {recentProducts.map((p) => (
-                <div
-                  key={p.id}
-                  className="px-5 py-3 flex items-center justify-between gap-3 text-xs hover:bg-slate-50/50 transition-colors"
-                >
-                  <div className="truncate flex-1">
-                    <span className="font-semibold text-slate-900 truncate block">{p.name}</span>
-                    <span className="text-[11px] text-slate-400 font-mono">{p.sku} · {p.brand}</span>
+            {recentProducts.length > 0 ? (
+              <div className="divide-y divide-slate-50">
+                {recentProducts.map((p) => (
+                  <div
+                    key={p.id}
+                    className="px-5 py-3 flex items-center justify-between gap-3 text-xs hover:bg-slate-50/50 transition-colors"
+                  >
+                    <div className="truncate flex-1">
+                      <span className="font-semibold text-slate-900 truncate block">{p.name}</span>
+                      <span className="text-[11px] text-slate-400 font-mono">{p.sku} · {p.brand}</span>
+                    </div>
+                    <div className="text-end shrink-0">
+                      <span className="font-bold text-slate-900 block tabular-nums">{formatPrice(p.priceDzd)}</span>
+                      <span className={`text-[10px] font-semibold ${
+                        p.status === 'available' ? 'text-emerald-600' : p.status === 'reserved' ? 'text-amber-600' : 'text-red-600'
+                      }`}>
+                        {t(`statuses.${p.status}`)} ({p.stockQuantity} pcs)
+                      </span>
+                    </div>
                   </div>
-                  <div className="text-end shrink-0">
-                    <span className="font-bold text-slate-900 block tabular-nums">{formatPrice(p.priceDzd)}</span>
-                    <span className={`text-[10px] font-semibold ${
-                      p.status === 'available' ? 'text-emerald-600' : p.status === 'reserved' ? 'text-amber-600' : 'text-red-600'
-                    }`}>
-                      {t(`statuses.${p.status}`)} ({p.stockQuantity} pcs)
-                    </span>
-                  </div>
+                ))}
+              </div>
+            ) : (
+              <div className="px-6 py-12 text-center space-y-2">
+                <div className="w-10 h-10 rounded-full bg-slate-100 flex items-center justify-center mx-auto">
+                  <Package className="w-5 h-5 text-slate-400" />
                 </div>
-              ))}
-            </div>
+                <p className="text-xs text-slate-500 font-medium">
+                  {language === 'ar' ? 'لا توجد منتجات في المخزون حتى الآن.' : 'Aucun produit en stock pour le moment.'}
+                </p>
+                <Link to="/admin/products/new" className="inline-block text-xs font-bold text-[#0075FF] hover:underline">
+                  {language === 'ar' ? '+ إضافة أول منتج' : '+ Ajouter un premier produit'}
+                </Link>
+              </div>
+            )}
           </div>
 
           {/* Col 2: Recent WhatsApp Inquiries */}

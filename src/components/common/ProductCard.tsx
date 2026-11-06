@@ -167,7 +167,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product, onQuickView }
       {/* Content Container */}
       <div className="p-4 sm:p-5 flex flex-col flex-1 justify-between gap-4">
         <div className="space-y-2">
-          {/* Brand & Rating */}
+          {/* Brand & Category */}
           <div className="flex items-center justify-between text-[11px]">
             <div className="font-semibold text-slate-400 uppercase tracking-wider flex items-center gap-1.5">
               <span className="text-slate-700 font-bold">{product.brand}</span>
@@ -175,10 +175,9 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product, onQuickView }
               <span className="font-mono text-[10px] text-slate-400">{product.sku}</span>
             </div>
 
-            <div className="flex items-center gap-1 text-amber-500 font-bold">
-              <Star className="w-3.5 h-3.5 fill-amber-400 text-amber-400" />
-              <span className="text-[11px] text-slate-700">4.9</span>
-            </div>
+            <span className="text-[10px] text-slate-400 font-medium capitalize">
+              {product.category?.replace(/-/g, ' ')}
+            </span>
           </div>
 
           {/* Title */}

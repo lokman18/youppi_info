@@ -417,7 +417,7 @@ export const CheckoutPage: React.FC = () => {
                 />
               </label>
 
-              {/* Option 2: BaridiMob / Edahabia CIB mock gateway */}
+              {/* Option 2: BaridiMob / Edahabia CIB gateway */}
               <label
                 onClick={() => setPaymentMethod('baridimob')}
                 className={`p-4 rounded-2xl border cursor-pointer transition-all flex items-center justify-between ${

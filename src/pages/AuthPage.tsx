@@ -21,7 +21,7 @@ interface AuthPageProps {
 
 export const AuthPage: React.FC<AuthPageProps> = ({ initialMode = 'login' }) => {
   const [mode, setMode] = useState<'login' | 'register'>(initialMode);
-  const { user, login, register, loginDemo, logout } = useAuth();
+  const { user, login, register, logout } = useAuth();
   const { navigate } = useRouter();
 
   const [name, setName] = useState('');
@@ -49,16 +49,6 @@ export const AuthPage: React.FC<AuthPageProps> = ({ initialMode = 'login' }) => 
     } finally {
       setIsLoading(false);
     }
-  };
-
-  const handleDemoClient = () => {
-    loginDemo('customer');
-    navigate('/');
-  };
-
-  const handleDemoAdmin = () => {
-    loginDemo('admin');
-    navigate('/admin');
   };
 
   if (user) {
@@ -157,30 +147,6 @@ export const AuthPage: React.FC<AuthPageProps> = ({ initialMode = 'login' }) => 
           </button>
         </div>
 
-        {/* Quick Demo Logins Strip */}
-        <div className="p-3 bg-gradient-to-r from-blue-500/10 via-cyan-500/10 to-blue-500/5 rounded-2xl border border-blue-200/60 space-y-2">
-          <span className="text-[10px] font-extrabold uppercase tracking-wider text-slate-700 flex items-center gap-1">
-            <Zap className="w-3.5 h-3.5 text-cyan-500 fill-cyan-500" />
-            Accès Démo 1-Clic
-          </span>
-          <div className="grid grid-cols-2 gap-2">
-            <button
-              type="button"
-              onClick={handleDemoClient}
-              className="px-2.5 py-1.5 bg-white hover:bg-slate-50 border border-slate-200 text-slate-800 text-[11px] font-bold rounded-lg transition-colors shadow-2xs cursor-pointer text-center"
-            >
-              Compte Client Démo
-            </button>
-            <button
-              type="button"
-              onClick={handleDemoAdmin}
-              className="px-2.5 py-1.5 bg-[#0A1128] hover:bg-slate-800 text-cyan-300 text-[11px] font-bold rounded-lg transition-colors shadow-2xs cursor-pointer text-center border border-cyan-500/30"
-            >
-              Accès Admin Démo
-            </button>
-          </div>
-        </div>
-
         {/* Form */}
         <form onSubmit={handleSubmit} className="space-y-4">
           {mode === 'register' && (
@@ -221,7 +187,7 @@ export const AuthPage: React.FC<AuthPageProps> = ({ initialMode = 'login' }) => 
               {mode === 'login' && (
                 <button
                   type="button"
-                  onClick={() => alert('Veuillez utiliser les accès 1-Clic démo ci-dessus ou saisir votre adresse email.')}
+                  onClick={() => alert('Veuillez contacter le support YOUPPI INFO sur WhatsApp pour réinitialiser vos identifiants.')}
                   className="text-[11px] text-slate-400 hover:text-[#0075FF] transition-colors"
                 >
                   Mot de passe oublié ?

@@ -10,15 +10,10 @@ import {
 
 import { storageAdapter } from './storageAdapter';
 
-import heroWorkstationImg from '../assets/images/hero_laptop_workstation_1792262364586.jpg';
-import thinkpadImg from '../assets/images/product_thinkpad_laptop_1792262364339.jpg';
-import gamingPcImg from '../assets/images/product_gaming_pc_rig_1792262364893.jpg';
-import gpuComponentImg from '../assets/images/product_gpu_component_1792262365283.jpg';
-
-const STORAGE_KEY_PRODUCTS = 'nexbyte_products_v1';
-const STORAGE_KEY_SETTINGS = 'nexbyte_settings_v1';
-const STORAGE_KEY_MOVEMENTS = 'nexbyte_movements_v1';
-const STORAGE_KEY_INQUIRIES = 'nexbyte_inquiries_v1';
+const STORAGE_KEY_PRODUCTS = 'youppi_products_v1';
+const STORAGE_KEY_SETTINGS = 'youppi_settings_v1';
+const STORAGE_KEY_MOVEMENTS = 'youppi_movements_v1';
+const STORAGE_KEY_INQUIRIES = 'youppi_inquiries_v1';
 
 export const CATEGORIES_DATA: CategoryInfo[] = [
   {
@@ -163,391 +158,17 @@ export const INITIAL_SETTINGS: StoreSettings = {
   addressAr: 'شارع ديدوش مراد، الجزائر الوسطى، الجزائر',
   openingHours: 'Samedi – Jeudi : 09h30 à 18h30 (Fermé le Vendredi)',
   openingHoursAr: 'السبت – الخميس: من 09:30 صباحاً إلى 18:30 مساءً (الجمعة عطلة)',
-  announcementText: 'Nouveaux arrivages disponibles : Laptops ThinkPad testés & Cartes graphiques RTX en stock !',
-  announcementTextAr: 'وصول دفعة جديدة من لابتوبات ThinkPad المفحوصة وكروت شاشة RTX !',
-  isAnnouncementEnabled: true,
+  announcementText: 'Bienvenue sur YOUPPI INFO !',
+  announcementTextAr: 'مرحباً بكم في يوبي إنفو !',
+  isAnnouncementEnabled: false,
   lowStockThresholdDefault: 2,
   enableInquiryTracking: true,
-  socialFacebook: 'https://facebook.com/nexbytedz',
-  socialInstagram: 'https://instagram.com/nexbytedz',
-  socialTiktok: 'https://tiktok.com/@nexbytedz',
+  socialFacebook: '',
+  socialInstagram: '',
+  socialTiktok: '',
 };
 
-export const INITIAL_PRODUCTS: Product[] = [
-  {
-    id: 'prod-thinkpad-t14',
-    sku: 'NB-LPT-001',
-    slug: 'lenovo-thinkpad-t14-gen-2-i7-16gb',
-    name: 'Lenovo ThinkPad T14 Gen 2 (Core i7 / 16GB / 512GB)',
-    nameAr: 'لينوفو ثينك باد T14 الجيل الثاني (Core i7 / 16GB / 512GB)',
-    brand: 'Lenovo',
-    category: 'business-laptops',
-    condition: 'refurbished',
-    priceDzd: 78000,
-    originalPriceDzd: 85000,
-    purchaseCostDzd: 58000,
-    stockQuantity: 4,
-    lowStockThreshold: 2,
-    status: 'available',
-    description: 'Ultraportable professionnel de référence. Châssis en polymère renforcé de fibres de verre, clavier anti-éclaboussures légendaire et sécurité matérielle ThinkShield.',
-    descriptionAr: 'حاسوب أعمال فائق التحمل من الفئة الأولى. هيكل مدعم بألياف الكربون، لوحة مفاتيح أسطورية مريحة للكتابة، ومعالج قوي للأداء اليومي.',
-    specifications: {
-      cpu: 'Intel Core i7-1165G7 (4 Cores, 8 Threads, jusqu’à 4.70 GHz)',
-      ram: '16 Go DDR4 3200MHz (extensible à 48 Go)',
-      storage: '512 Go SSD M.2 PCIe NVMe',
-      gpu: 'Intel Iris Xe Graphics G7',
-      screen: '14.0" Full HD (1920x1080) IPS Antireflet 300 nits',
-      batteryHealth: '94% d’autonomie résiduelle (environ 6-7h en usage bureautique)',
-      keyboardLayout: 'AZERTY Français d’origine rétroéclairé',
-      chargerIncluded: true,
-      cosmeticCondition: 'grade-a',
-      knownDefects: 'Légères micro-rayures superficielles sous le châssis inférieur, écran et repose-poignets impeccables.',
-      warrantyPeriod: 'Garantie test matériel 30 jours',
-    },
-    images: [
-      {
-        id: 'img-tp-1',
-        url: thinkpadImg,
-        altText: 'Lenovo ThinkPad T14 Gen 2 vue ouverte',
-        isPrimary: true,
-        sortOrder: 1,
-      },
-      {
-        id: 'img-tp-2',
-        url: heroWorkstationImg,
-        altText: 'Lenovo ThinkPad T14 poste de travail',
-        isPrimary: false,
-        sortOrder: 2,
-      },
-    ],
-    isFeatured: true,
-    isOffer: true,
-    internalNotes: 'Lot provenant d’un parc d’entreprise en Suisse. Pâte thermique neuve Thermal Grizzly Kryonaut appliquée.',
-    isDemo: true,
-    publishedAt: '2026-10-10T10:00:00Z',
-    createdAt: '2026-10-10T10:00:00Z',
-    updatedAt: '2026-10-15T12:00:00Z',
-  },
-  {
-    id: 'prod-dell-latitude-7420',
-    sku: 'NB-LPT-002',
-    slug: 'dell-latitude-7420-carbon-i5-16gb',
-    name: 'Dell Latitude 7420 Carbon Fiber (Core i5 / 16GB / 256GB)',
-    nameAr: 'ديل لاتيتيود 7420 فايبر كربون (Core i5 / 16GB / 256GB)',
-    brand: 'Dell',
-    category: 'business-laptops',
-    condition: 'used',
-    priceDzd: 62000,
-    originalPriceDzd: 68000,
-    purchaseCostDzd: 47000,
-    stockQuantity: 3,
-    lowStockThreshold: 1,
-    status: 'available',
-    description: 'Châssis compact haut de gamme en fibre de carbone tressée. Écran ultra-lumineux et connectique complète avec 2 ports Thunderbolt 4.',
-    descriptionAr: 'لابتوب نحيف وخفيف الوزن بهيكل كربون فايبر فاخر. مزود بمنافذ ثاندربولت 4 الحديثة وبطارية ممتازة.',
-    specifications: {
-      cpu: 'Intel Core i5-1145G7 vPro (4 Cores, 8 Threads, jusqu’à 4.40 GHz)',
-      ram: '16 Go LPDDR4x 4267MHz soudée',
-      storage: '256 Go SSD M.2 NVMe Classe 35 (mise à niveau 512 Go possible sur demande)',
-      gpu: 'Intel Iris Xe Graphics',
-      screen: '14.0" FHD (1920x1080) WVA ConfortView Plus 400 nits',
-      batteryHealth: '88% de santé (autonomie testée : ~5h en streaming/web)',
-      keyboardLayout: 'QWERTY US avec rétroéclairage',
-      chargerIncluded: true,
-      cosmeticCondition: 'grade-a',
-      knownDefects: 'Aucun défaut mécanique ou pixel mort. Châssis très propre.',
-      warrantyPeriod: 'Garantie test matériel 30 jours',
-    },
-    images: [
-      {
-        id: 'img-dell-1',
-        url: thinkpadImg,
-        altText: 'Dell Latitude 7420',
-        isPrimary: true,
-        sortOrder: 1,
-      },
-    ],
-    isFeatured: true,
-    isOffer: false,
-    internalNotes: 'Matériel propre vérifié sous MemTest86 sans erreur.',
-    isDemo: true,
-    publishedAt: '2026-10-12T14:30:00Z',
-    createdAt: '2026-10-12T14:30:00Z',
-    updatedAt: '2026-10-12T14:30:00Z',
-  },
-  {
-    id: 'prod-gaming-pc-vortex',
-    sku: 'NB-DSK-001',
-    slug: 'pc-gamer-vortex-horizon-i5-13400f-rtx4070',
-    name: 'Tour Gaming "Vortex Horizon" (i5-13400F / RTX 4070 12GB / 32GB DDR5 / 1TB SSD)',
-    nameAr: 'كمبيوتر ألعاب "فورتكس هورايزن" (i5-13400F / RTX 4070 / 32GB DDR5)',
-    brand: 'YOUPPI Custom',
-    category: 'gaming-pc',
-    condition: 'new',
-    priceDzd: 215000,
-    originalPriceDzd: 235000,
-    purchaseCostDzd: 182000,
-    stockQuantity: 2,
-    lowStockThreshold: 1,
-    status: 'available',
-    description: 'Configuration sur mesure pensée pour le jeu 1440p ultra à plus de 120 FPS et les calculs 3D/IA. Refroidissement liquide Watercooling 240mm et flux d’air optimisé.',
-    descriptionAr: 'تجميعة ألعاب احترافية صممت لتشغيل أحدث الألعاب بدقة 2K 1440p بمعدل إطارات يتجاوز 120 FPS وبرامج المونتاج والرندر.',
-    specifications: {
-      cpu: 'Intel Core i5-13400F (10 Cores, 16 Threads, Max 4.60 GHz)',
-      gpu: 'NVIDIA GeForce RTX 4070 12 Go GDDR6X (DLSS 3 & Ray Tracing)',
-      motherboard: 'MSI B760M Gaming Plus WiFi DDR5',
-      ram: '32 Go (2x16Go) Corsair Vengeance DDR5 6000MHz CL36',
-      storage: '1 To Kingston KC3000 PCIe 4.0 NVMe (7000 Mo/s en lecture)',
-      psu: 'DeepCool PM750D 750W 80 PLUS Gold Certifié',
-      cooling: 'AIO Liquid Cooler 240mm ARGB avec pompe céramique',
-      caseModel: 'Boîtier Moyen Tour verre trempé avec 4 ventilateurs PWM 120mm',
-      warrantyPeriod: 'Garantie atelier 12 mois pièces et main d’œuvre',
-    },
-    images: [
-      {
-        id: 'img-vortex-1',
-        url: gamingPcImg,
-        altText: 'Tour PC Gamer Vortex Horizon avec éclairage interne cyan',
-        isPrimary: true,
-        sortOrder: 1,
-      },
-      {
-        id: 'img-vortex-2',
-        url: gpuComponentImg,
-        altText: 'Carte graphique RTX installée dans le PC Gamer',
-        isPrimary: false,
-        sortOrder: 2,
-      },
-    ],
-    isFeatured: true,
-    isOffer: true,
-    internalNotes: 'Assemblage minutieux avec câble-management propre. Windows 11 Pro préinstallé sans bloatware.',
-    isDemo: true,
-    publishedAt: '2026-10-14T09:15:00Z',
-    createdAt: '2026-10-14T09:15:00Z',
-    updatedAt: '2026-10-16T11:00:00Z',
-  },
-  {
-    id: 'prod-gpu-rtx-4070-ti',
-    sku: 'NB-GPU-001',
-    slug: 'gigabyte-aorus-geforce-rtx-4070-ti-master-12g',
-    name: 'Gigabyte AORUS GeForce RTX 4070 Ti Master 12G',
-    nameAr: 'كرت شاشة جيجابايت أوروس RTX 4070 Ti ماستر 12GB',
-    brand: 'Gigabyte',
-    category: 'gpus',
-    condition: 'used',
-    priceDzd: 128000,
-    originalPriceDzd: 139000,
-    purchaseCostDzd: 104000,
-    stockQuantity: 1,
-    lowStockThreshold: 1,
-    status: 'available',
-    description: 'Le fleuron de Gigabyte. Système de refroidissement Max-Covered à 3 ventilateurs Bionic Shark, écran LCD Edge View intégré et double BIOS silencieux/performance.',
-    descriptionAr: 'واحدة من أقوى نسخ كروت RTX 4070 Ti. تبريد ضخم ثلاثي المراوح وشاشة LCD جانبية لعرض درجات الحرارة.',
-    specifications: {
-      manufacturer: 'Gigabyte AORUS',
-      exactModel: 'GV-N407TAORUS M-12GD',
-      gpu: 'NVIDIA AD104 (7680 cœurs CUDA, 12 Go GDDR6X 192-bit)',
-      compatibility: 'Slot PCIe 4.0 x16, Boîtier acceptant 342 mm de longueur, Alim recommandée 750W (câble 16 broches inclus)',
-      physicalCondition: 'Grade A+ (aucun défaut visuel, jamais minée, températures FurMark max 62°C)',
-      includedAccessories: 'Boîte d’origine, support anti-affaissement AORUS, adaptateur 2x8-pin vers 16-pin',
-      warrantyPeriod: 'Garantie test 30 jours',
-    },
-    images: [
-      {
-        id: 'img-gpu-1',
-        url: gpuComponentImg,
-        altText: 'Carte graphique AORUS GeForce RTX 4070 Ti Master',
-        isPrimary: true,
-        sortOrder: 1,
-      },
-    ],
-    isFeatured: true,
-    isOffer: false,
-    internalNotes: 'Client ayant fait un upgrade vers une RTX 4090. Testée 2 heures sous FurMark et 3DMark TimeSpy.',
-    isDemo: true,
-    publishedAt: '2026-10-13T16:00:00Z',
-    createdAt: '2026-10-13T16:00:00Z',
-    updatedAt: '2026-10-13T16:00:00Z',
-  },
-  {
-    id: 'prod-asus-rog-zephyrus',
-    sku: 'NB-LPT-003',
-    slug: 'asus-rog-zephyrus-g14-ryzen7-rtx3060',
-    name: 'ASUS ROG Zephyrus G14 (Ryzen 7 / RTX 3060 / 16GB / 1TB SSD)',
-    nameAr: 'أسوس روج زيفيروس G14 (رايزن 7 / RTX 3060 / 16GB)',
-    brand: 'ASUS',
-    category: 'gaming-laptops',
-    condition: 'used',
-    priceDzd: 145000,
-    originalPriceDzd: 158000,
-    purchaseCostDzd: 118000,
-    stockQuantity: 1,
-    lowStockThreshold: 1,
-    status: 'available',
-    description: 'Le champion de l’autonomie et de la puissance compacte. 14 pouces seulement, moins de 1.7 kg, capable de faire tourner vos jeux en haute qualité partout où vous allez.',
-    descriptionAr: 'أقوى حاسوب ألعاب مدمج وخفيف الوزن بوزن 1.7 كغ فقط. بطارية تدوم طويلاً وأداء ممتاز للألعاب والمونتاج.',
-    specifications: {
-      cpu: 'AMD Ryzen 7 5800HS (8 Cores, 16 Threads, 3.0 à 4.4 GHz)',
-      ram: '16 Go DDR4 3200MHz Dual-Channel',
-      storage: '1 To SSD M.2 NVMe',
-      gpu: 'NVIDIA GeForce RTX 3060 6 Go GDDR6 (avec ROG Boost)',
-      screen: '14.0" WQHD (2560x1440) 120Hz IPS 100% DCI-P3 Pantone Validated',
-      batteryHealth: '89% d’état de santé (autonomie ~6h en profil éco silencieux)',
-      keyboardLayout: 'QWERTY US rétroéclairé',
-      chargerIncluded: true,
-      cosmeticCondition: 'grade-a',
-      knownDefects: 'Traces mineures de manipulation sur les coins extérieurs, touchpad et écran 100% sans défaut.',
-      warrantyPeriod: 'Garantie test 30 jours',
-    },
-    images: [
-      {
-        id: 'img-rog-1',
-        url: heroWorkstationImg,
-        altText: 'ASUS ROG Zephyrus G14 écran allumé',
-        isPrimary: true,
-        sortOrder: 1,
-      },
-    ],
-    isFeatured: true,
-    isOffer: true,
-    internalNotes: 'Nettoyage des doubles ventilateurs et changement des thermal pads.',
-    isDemo: true,
-    publishedAt: '2026-10-08T11:00:00Z',
-    createdAt: '2026-10-08T11:00:00Z',
-    updatedAt: '2026-10-15T15:20:00Z',
-  },
-  {
-    id: 'prod-hp-elitebook-840',
-    sku: 'NB-LPT-004',
-    slug: 'hp-elitebook-840-g7-i5-16gb-512gb',
-    name: 'HP EliteBook 840 G7 Aluminium (Core i5 / 16GB / 512GB SSD)',
-    nameAr: 'إتش بي إليت بوك 840 G7 ألمنيوم (Core i5 / 16GB / 512GB)',
-    brand: 'HP',
-    category: 'business-laptops',
-    condition: 'refurbished',
-    priceDzd: 54000,
-    originalPriceDzd: 59000,
-    purchaseCostDzd: 41000,
-    stockQuantity: 5,
-    lowStockThreshold: 2,
-    status: 'available',
-    description: 'Châssis monocoque en aluminium brossé ultra-élégant. Son Bang & Olufsen puissant, caméra de confidentialité et autonomie impressionnante.',
-    descriptionAr: 'لابتوب ألمنيوم أنيق جداً ونحيف. صوت نقي بنظام بانغ آند أولوفسن ومواصفات ممتازة للمكاتب والمحاسبة وتصفح الويب.',
-    specifications: {
-      cpu: 'Intel Core i5-10310U (4 Cores, 8 Threads, jusqu’à 4.40 GHz)',
-      ram: '16 Go DDR4 2666MHz (2 slots disponibles)',
-      storage: '512 Go SSD M.2 PCIe NVMe',
-      gpu: 'Intel UHD Graphics 620',
-      screen: '14.0" FHD (1920x1080) IPS Antireflet 400 nits faible consommation',
-      batteryHealth: '91% d’autonomie',
-      keyboardLayout: 'AZERTY Français d’origine',
-      chargerIncluded: true,
-      cosmeticCondition: 'grade-a',
-      knownDefects: 'Très bel état d’ensemble, matériel reconditionné d’usine.',
-      warrantyPeriod: 'Garantie test matériel 30 jours',
-    },
-    images: [
-      {
-        id: 'img-hp-1',
-        url: thinkpadImg,
-        altText: 'HP EliteBook 840 G7',
-        isPrimary: true,
-        sortOrder: 1,
-      },
-    ],
-    isFeatured: false,
-    isOffer: false,
-    internalNotes: 'Arrivage de 5 pièces uniformes. Parfait pour étudiants et gestion commerciale.',
-    isDemo: true,
-    publishedAt: '2026-10-14T08:00:00Z',
-    createdAt: '2026-10-14T08:00:00Z',
-    updatedAt: '2026-10-14T08:00:00Z',
-  },
-  {
-    id: 'prod-ssd-samsung-980pro',
-    sku: 'NB-SSD-001',
-    slug: 'samsung-980-pro-nvme-1tb',
-    name: 'Samsung 980 PRO NVMe M.2 SSD 1To (PCIe 4.0)',
-    nameAr: 'قرص تخزين سامسونج 980 برو 1 تيرابايت M.2 NVMe',
-    brand: 'Samsung',
-    category: 'ram-ssd',
-    condition: 'new',
-    priceDzd: 18500,
-    originalPriceDzd: 21000,
-    purchaseCostDzd: 15200,
-    stockQuantity: 8,
-    lowStockThreshold: 2,
-    status: 'available',
-    description: 'Le SSD haute performance par excellence. Vitesse de lecture jusqu’à 7000 Mo/s, idéal pour réduire les temps de chargement sur PC gamer et PS5.',
-    descriptionAr: 'أقوى أقراص التخزين بسرعة قراءة تصل إلى 7000 ميغابايت بالثانية، مثالي للكمبيوتر وبلايستيشن 5.',
-    specifications: {
-      manufacturer: 'Samsung Electronics',
-      exactModel: 'MZ-V8P1T0BW',
-      storage: '1 To (1000 Go) 3D V-NAND TLC',
-      compatibility: 'PCIe Gen 4.0 x4, rétrocompatible PCIe 3.0, Format M.2 2280',
-      warrantyPeriod: 'Garantie constructeur 5 ans',
-    },
-    images: [
-      {
-        id: 'img-ssd-1',
-        url: gpuComponentImg,
-        altText: 'Samsung 980 PRO NVMe M.2 1TB',
-        isPrimary: true,
-        sortOrder: 1,
-      },
-    ],
-    isFeatured: false,
-    isOffer: true,
-    internalNotes: 'Produit neuf scellé dans sa boîte officielle avec hologramme d’authenticité.',
-    isDemo: true,
-    publishedAt: '2026-10-11T13:00:00Z',
-    createdAt: '2026-10-11T13:00:00Z',
-    updatedAt: '2026-10-11T13:00:00Z',
-  },
-  {
-    id: 'prod-periph-logitech-gpro',
-    sku: 'NB-ACC-001',
-    slug: 'logitech-g-pro-x-superlight-black',
-    name: 'Logitech G PRO X Superlight Wireless (Noir)',
-    nameAr: 'فأرة لوجيتك جي برو إكس سوبرلايت اللاسلكية (أسود)',
-    brand: 'Logitech',
-    category: 'peripherals',
-    condition: 'refurbished',
-    priceDzd: 16000,
-    originalPriceDzd: 19000,
-    purchaseCostDzd: 11500,
-    stockQuantity: 2,
-    lowStockThreshold: 1,
-    status: 'available',
-    description: 'La souris reine de la compétition e-sport mondiale. Moins de 63 grammes, capteur HERO 25K sans lissage et patins PTFE haute glisse.',
-    descriptionAr: 'الفأرة الاحترافية لبطولات الألعاب العالمية بوزن خفيف جداً أقل من 63 غرام وحساسية استثنائية.',
-    specifications: {
-      manufacturer: 'Logitech G',
-      exactModel: 'G PRO X Superlight Wireless Gaming Mouse',
-      physicalCondition: 'Reconditionné état neuf, patins PTFE neufs posés',
-      batteryHealth: 'Batterie interne Li-Po 70 heures d’autonomie',
-      includedAccessories: 'Câble de charge, récepteur USB LIGHTSPEED, adaptateur d’extension',
-      warrantyPeriod: 'Garantie test 30 jours',
-    },
-    images: [
-      {
-        id: 'img-mouse-1',
-        url: heroWorkstationImg,
-        altText: 'Logitech G PRO X Superlight sur tapis de souris',
-        isPrimary: true,
-        sortOrder: 1,
-      },
-    ],
-    isFeatured: false,
-    isOffer: false,
-    internalNotes: 'Vérification de tous les clics et de la molette sous logiciel de test de switch.',
-    isDemo: true,
-    publishedAt: '2026-10-09T10:00:00Z',
-    createdAt: '2026-10-09T10:00:00Z',
-    updatedAt: '2026-10-09T10:00:00Z',
-  },
-];
+export const INITIAL_PRODUCTS: Product[] = [];
 
 class StoreService {
   private products: Product[] = [];
@@ -562,16 +183,27 @@ class StoreService {
   }
 
   private init() {
+    // 0. Clean legacy nexbyte keys from localStorage if present
+    try {
+      localStorage.removeItem('nexbyte_products_v1');
+      localStorage.removeItem('nexbyte_movements_v1');
+      localStorage.removeItem('nexbyte_inquiries_v1');
+      localStorage.removeItem('nexbyte_settings_v1');
+    } catch {
+      // ignore
+    }
+
     // 1. Fast synchronous hydration from localStorage
     const savedProducts = storageAdapter.safeGetLocalStorage(STORAGE_KEY_PRODUCTS);
     if (savedProducts) {
       try {
-        this.products = JSON.parse(savedProducts);
+        const parsed = JSON.parse(savedProducts);
+        this.products = Array.isArray(parsed) ? parsed.filter(p => !p.isDemo) : [];
       } catch {
-        this.products = [...INITIAL_PRODUCTS];
+        this.products = [];
       }
     } else {
-      this.products = [...INITIAL_PRODUCTS];
+      this.products = [];
     }
 
     // Load settings
@@ -595,34 +227,7 @@ class StoreService {
         this.movements = [];
       }
     } else {
-      this.movements = [
-        {
-          id: 'mov-1',
-          productId: 'prod-thinkpad-t14',
-          productName: 'Lenovo ThinkPad T14 Gen 2',
-          productSku: 'NB-LPT-001',
-          movementType: 'stock_in',
-          quantityDelta: 4,
-          resultingQuantity: 4,
-          reason: 'Réception arrivage lot Suisse',
-          reference: 'BL-2026-10-01',
-          createdBy: 'Admin YOUPPI',
-          createdAt: '2026-10-10T10:30:00Z',
-        },
-        {
-          id: 'mov-2',
-          productId: 'prod-gaming-pc-vortex',
-          productName: 'Tour Gaming "Vortex Horizon"',
-          productSku: 'NB-DSK-001',
-          movementType: 'stock_in',
-          quantityDelta: 2,
-          resultingQuantity: 2,
-          reason: 'Assemblage atelier et fin des benchmarks',
-          reference: 'PROD-004',
-          createdBy: 'Technicien YOUPPI',
-          createdAt: '2026-10-14T10:00:00Z',
-        },
-      ];
+      this.movements = [];
     }
 
     // Load inquiries
@@ -644,15 +249,10 @@ class StoreService {
   private async hydrateFromIndexedDb() {
     try {
       const idbProducts = await storageAdapter.getIdbItem<Product[]>(STORAGE_KEY_PRODUCTS);
-      if (idbProducts && Array.isArray(idbProducts) && idbProducts.length > 0) {
-        // If IndexedDB has more data or our local cache had stripped images, adopt IndexedDB data
-        this.products = idbProducts;
+      if (idbProducts && Array.isArray(idbProducts)) {
+        this.products = idbProducts.filter(p => !p.isDemo);
         this.isHydrated = true;
         this.notifySubscribers();
-      } else if (this.products.length > 0) {
-        // Seed IndexedDB with initial products for future durability
-        await storageAdapter.setIdbItem(STORAGE_KEY_PRODUCTS, this.products);
-        this.isHydrated = true;
       }
 
       // Also hydrate settings and movements if available
@@ -1108,8 +708,12 @@ class StoreService {
   }
 
   public resetToSeedData() {
-    this.products = [...INITIAL_PRODUCTS];
+    this.products = [];
+    this.movements = [];
+    this.inquiries = [];
     this.saveProducts();
+    this.saveMovements();
+    this.saveInquiries();
   }
 }
 

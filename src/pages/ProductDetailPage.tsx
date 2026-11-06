@@ -129,32 +129,7 @@ export const ProductDetailPage: React.FC<ProductDetailPageProps> = ({ slug }) =>
     ? Math.round(((product.originalPriceDzd! - product.priceDzd) / product.originalPriceDzd!) * 100)
     : 0;
 
-  const mockReviews = [
-    {
-      author: 'Walid M.',
-      city: 'Alger',
-      rating: 5,
-      date: 'Il y a 3 jours',
-      comment: 'Matériel impeccable, conforme à 100% à la description. Benchmark CPU et batterie testés sans surprise. Livraison rapide en 24h chrono.',
-      verified: true,
-    },
-    {
-      author: 'Amine K.',
-      city: 'Oran',
-      rating: 5,
-      date: 'Il y a 1 semaine',
-      comment: 'Excellent service client, emballage blindé avec cales bulles. Le laptop tourne comme une horloge pour mes rendus 3D.',
-      verified: true,
-    },
-    {
-      author: 'Sofiane B.',
-      city: 'Constantine',
-      rating: 4.8,
-      date: 'Il y a 2 semaines',
-      comment: 'Rapport qualité/prix imbattable. Je recommande vivement YOUPPI INFO !',
-      verified: true,
-    }
-  ];
+  const reviews: Array<{ author: string; city: string; rating: number; date: string; comment: string; verified: boolean }> = [];
 
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-12">
@@ -324,14 +299,12 @@ export const ProductDetailPage: React.FC<ProductDetailPageProps> = ({ slug }) =>
                 {language === 'ar' && product.nameAr ? product.nameAr : product.name}
               </h1>
 
-              <div className="flex items-center gap-2 text-xs">
-                <div className="flex items-center text-amber-400">
-                  {[...Array(5)].map((_, i) => (
-                    <Star key={i} className="w-3.5 h-3.5 fill-amber-400" />
-                  ))}
-                </div>
-                <span className="font-bold text-slate-700">4.9 / 5</span>
-                <span className="text-slate-400">(24 avis vérifiés)</span>
+              <div className="flex items-center gap-2 text-xs text-slate-500">
+                <span className="font-semibold text-slate-700">
+                  {language === 'ar' ? 'الضمان: 30 يوماً فحص واختبار' : 'Garantie atelier : 30 jours'}
+                </span>
+                <span aria-hidden="true" className="text-slate-300">·</span>
+                <span>{language === 'ar' ? 'فحص أصلي 100%' : '100% Testé & Révisé'}</span>
               </div>
             </div>
 
@@ -596,26 +569,18 @@ export const ProductDetailPage: React.FC<ProductDetailPageProps> = ({ slug }) =>
         )}
 
         {activeTab === 'reviews' && (
-          <div className="space-y-6">
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-              {mockReviews.map((rev, idx) => (
-                <div key={idx} className="p-5 rounded-2xl bg-slate-50 border border-slate-200/80 space-y-2">
-                  <div className="flex items-center justify-between">
-                    <span className="font-bold text-xs text-slate-900">{rev.author}</span>
-                    <span className="text-[10px] text-slate-400">{rev.date}</span>
-                  </div>
-                  <div className="flex items-center gap-1 text-amber-400">
-                    {[...Array(5)].map((_, i) => (
-                      <Star key={i} className="w-3 h-3 fill-amber-400" />
-                    ))}
-                  </div>
-                  <p className="text-xs text-slate-600 leading-relaxed">{rev.comment}</p>
-                  <span className="text-[10px] font-bold text-emerald-600 flex items-center gap-1 pt-1">
-                    <Check className="w-3 h-3" /> Achat vérifié ({rev.city})
-                  </span>
-                </div>
-              ))}
+          <div className="p-12 text-center bg-slate-50 border border-slate-200/80 rounded-2xl space-y-3">
+            <div className="w-12 h-12 rounded-2xl bg-amber-50 text-amber-500 flex items-center justify-center mx-auto">
+              <Star className="w-6 h-6 fill-amber-400 text-amber-400" />
             </div>
+            <h4 className="text-sm font-bold text-slate-800">
+              {language === 'ar' ? 'لا توجد تقييمات لهذا المنتج حتى الآن' : 'Aucun avis pour ce produit pour le moment'}
+            </h4>
+            <p className="text-xs text-slate-500 max-w-md mx-auto">
+              {language === 'ar'
+                ? 'كن أول من يقتني هذا العتاد ويشارك تجربته مع مجتمع يوبي إنفو.'
+                : 'Soyez le premier client à acquérir cette machine et à partager votre retour technique.'}
+            </p>
           </div>
         )}
 

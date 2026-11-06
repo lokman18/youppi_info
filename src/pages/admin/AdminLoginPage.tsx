@@ -94,7 +94,7 @@ export const AdminLoginPage: React.FC = () => {
                   autoComplete="off"
                   value={username}
                   onChange={(e) => setUsername(e.target.value)}
-                  placeholder={language === 'ar' ? 'اسم المستخدم (admin أو stock)' : 'Nom d\'utilisateur (ex: admin ou stock)'}
+                  placeholder={language === 'ar' ? 'اسم المستخدم' : 'Nom d\'utilisateur'}
                   className="w-full bg-slate-50 border border-slate-200 rounded-xl ps-11 pe-3 py-3 text-slate-900 placeholder-slate-400 focus:outline-none focus:border-[#0075FF] focus:ring-2 focus:ring-blue-100 transition-all"
                 />
               </div>

@@ -131,7 +131,7 @@ class StorageAdapter {
       console.warn(`LocalStorage quota exceeded for ${key}. Applying compression & pruning strategy.`);
 
       // Strategy 1: If saving products, prune heavy base64 strings for localStorage copy
-      if (key === 'nexbyte_products_v1') {
+      if (key === 'youppi_products_v1' || key === 'nexbyte_products_v1') {
         try {
           const parsed = JSON.parse(rawValue);
           if (Array.isArray(parsed)) {
@@ -164,6 +164,7 @@ class StorageAdapter {
 
       // Strategy 2: If still overflowing, clear non-critical old logs/movements from localStorage
       try {
+        localStorage.removeItem('youppi_movements_v1');
         localStorage.removeItem('nexbyte_movements_v1');
         localStorage.setItem(key, rawValue);
         return true;

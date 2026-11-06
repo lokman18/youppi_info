@@ -6,23 +6,11 @@ interface AuthContextType {
   user: CustomerUser | null;
   isAuthenticated: boolean;
   login: (email: string, password?: string) => Promise<boolean>;
-  loginDemo: (role?: 'customer' | 'admin') => void;
   register: (name: string, email: string, password?: string) => Promise<boolean>;
   logout: () => void;
 }
 
 const AUTH_USER_STORAGE_KEY = 'youppi_auth_user_v1';
-
-const DEMO_CUSTOMER: CustomerUser = {
-  id: 'cust-01',
-  name: 'Karim Brahimi',
-  email: 'karim.brahimi@gmail.com',
-  phone: '0550 12 34 56',
-  wilaya: '16 - Alger',
-  address: '12 Rue Didouche Mourad, Alger Centre',
-  avatar: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=120&auto=format&fit=crop&q=80',
-  role: 'customer',
-};
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
 
@@ -31,9 +19,18 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
   const [user, setUser] = useState<CustomerUser | null>(() => {
     try {
       const saved = localStorage.getItem(AUTH_USER_STORAGE_KEY);
-      return saved ? JSON.parse(saved) : DEMO_CUSTOMER; // default to logged in demo user for instant smooth experience
+      if (saved) {
+        const parsed = JSON.parse(saved);
+        // Clean out legacy demo account if found
+        if (parsed?.id === 'cust-01' || parsed?.id === 'admin-01' || parsed?.name === 'Karim Brahimi') {
+          localStorage.removeItem(AUTH_USER_STORAGE_KEY);
+          return null;
+        }
+        return parsed;
+      }
+      return null;
     } catch {
-      return DEMO_CUSTOMER;
+      return null;
     }
   });
 
@@ -50,7 +47,6 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
   }, [user]);
 
   const login = useCallback(async (email: string, _password?: string): Promise<boolean> => {
-    // Simulated realistic authentication
     const cleanEmail = email.trim();
     if (!cleanEmail || !cleanEmail.includes('@')) {
       showToast({ type: 'error', title: 'Erreur', message: 'Veuillez saisir une adresse email valide' });
@@ -58,35 +54,17 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
     }
 
     const newUser: CustomerUser = {
-      id: 'cust-' + Math.random().toString(36).substring(2, 7),
+      id: 'cust-' + Math.random().toString(36).substring(2, 9),
       name: cleanEmail.split('@')[0],
       email: cleanEmail,
       wilaya: '16 - Alger',
-      address: 'Alger, Algérie',
+      address: '',
       role: 'customer',
     };
 
     setUser(newUser);
     showToast({ type: 'success', title: 'Connexion réussie !', message: `Bienvenue, ${newUser.name}` });
     return true;
-  }, [showToast]);
-
-  const loginDemo = useCallback((role: 'customer' | 'admin' = 'customer') => {
-    if (role === 'admin') {
-      const adminUser: CustomerUser = {
-        id: 'admin-01',
-        name: 'Administrateur YOUPPI',
-        email: 'admin@youppi-info.dz',
-        phone: '0555 12 34 56',
-        wilaya: '16 - Alger',
-        role: 'admin',
-      };
-      setUser(adminUser);
-      showToast({ type: 'success', title: 'Mode Admin Activé', message: 'Connecté en tant qu’administrateur' });
-    } else {
-      setUser(DEMO_CUSTOMER);
-      showToast({ type: 'success', title: 'Connexion démo', message: 'Connecté en tant que Karim Brahimi' });
-    }
   }, [showToast]);
 
   const register = useCallback(async (name: string, email: string, _password?: string): Promise<boolean> => {
@@ -96,11 +74,11 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
     }
 
     const newUser: CustomerUser = {
-      id: 'cust-' + Math.random().toString(36).substring(2, 7),
+      id: 'cust-' + Math.random().toString(36).substring(2, 9),
       name: name.trim(),
       email: email.trim(),
       wilaya: '16 - Alger',
-      address: 'Algérie',
+      address: '',
       role: 'customer',
     };
 
@@ -120,7 +98,6 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
         user,
         isAuthenticated: !!user,
         login,
-        loginDemo,
         register,
         logout,
       }}
