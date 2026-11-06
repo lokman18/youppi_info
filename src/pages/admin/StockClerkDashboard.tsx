@@ -22,7 +22,8 @@ import {
   TrendingUp,
   TrendingDown,
   X,
-  Sparkles
+  Sparkles,
+  LayoutDashboard
 } from 'lucide-react';
 
 export const StockClerkDashboard: React.FC = () => {
@@ -285,6 +286,18 @@ export const StockClerkDashboard: React.FC = () => {
             >
               <Package className="w-4 h-4" />
             </Link>
+
+            {/* Link back to Admin Dashboard if Super Admin */}
+            {authService.isSuperAdmin() && (
+              <Link
+                to="/admin"
+                className="flex items-center gap-1.5 px-2.5 py-1.5 bg-blue-600/25 hover:bg-blue-600/40 text-cyan-300 border border-blue-400/30 rounded-xl text-xs font-bold transition-all"
+                title={language === 'ar' ? 'الرجوع إلى لوحة تحكم المدير' : 'Retour au Dashboard Admin'}
+              >
+                <LayoutDashboard className="w-3.5 h-3.5" />
+                <span className="hidden md:inline">{language === 'ar' ? 'لوحة المدير' : 'Dashboard Admin'}</span>
+              </Link>
+            )}
 
             {/* Logout */}
             <button

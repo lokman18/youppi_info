@@ -178,7 +178,13 @@ export const Footer: React.FC = () => {
           <div className="flex items-center gap-6">
             <Link to="/about" className="hover:text-slate-300 transition-colors">Garantie & Audit</Link>
             <Link to="/contact" className="hover:text-slate-300 transition-colors">Support Client</Link>
-            <Link to="/admin/login" className="hover:text-slate-300 transition-colors font-mono">Portail Admin</Link>
+            <Link 
+              to="/admin/login" 
+              className="text-cyan-400 hover:text-cyan-300 transition-colors font-medium flex items-center gap-1.5 py-1 px-2.5 rounded-lg bg-cyan-950/40 border border-cyan-800/50"
+            >
+              <ShieldCheck className="w-3.5 h-3.5" />
+              <span>Portail Admin & Stock</span>
+            </Link>
           </div>
         </div>
       </div>

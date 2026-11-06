@@ -235,6 +235,17 @@ export const AuthPage: React.FC<AuthPageProps> = ({ initialMode = 'login' }) => 
           <Link to="/terms" className="text-slate-700 underline">Conditions générales</Link> et la{' '}
           <Link to="/privacy" className="text-slate-700 underline">Politique de confidentialité</Link>.
         </p>
+
+        {/* Espace Équipe / Admin & Stock */}
+        <div className="pt-4 border-t border-slate-100 flex items-center justify-center">
+          <Link
+            to="/admin/login"
+            className="text-xs font-semibold text-slate-500 hover:text-[#0075FF] transition-colors flex items-center gap-1.5 py-1 px-2.5 rounded-lg hover:bg-slate-50"
+          >
+            <ShieldCheck className="w-4 h-4 text-blue-500" />
+            <span>Portail Équipe (Administration & Stock)</span>
+          </Link>
+        </div>
       </motion.div>
     </div>
   );

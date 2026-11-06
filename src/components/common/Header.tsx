@@ -392,6 +392,15 @@ export const Header: React.FC = () => {
                 <MessageCircle className="w-4 h-4" />
                 <span>{t('nav.whatsappDirect')}</span>
               </button>
+
+              <Link
+                to="/admin/login"
+                onClick={() => setMobileMenuOpen(false)}
+                className="w-full flex items-center justify-center gap-2 px-4 py-2.5 text-xs font-bold text-slate-700 bg-slate-100 hover:bg-slate-200 rounded-xl transition-colors"
+              >
+                <ShieldCheck className="w-4 h-4 text-[#0075FF]" />
+                <span>Portail Équipe (Admin & Stock)</span>
+              </Link>
             </div>
           </motion.div>
         )}

@@ -45,6 +45,7 @@ export const AdminLayout: React.FC<AdminLayoutProps> = ({ children, activeTab })
         { id: 'dashboard', label: t('admin.dashboard'), icon: LayoutDashboard, path: '/admin' },
         { id: 'products', label: t('admin.products'), icon: Package, path: '/admin/products' },
         { id: 'inventory', label: t('admin.inventory'), icon: Boxes, path: '/admin/inventory' },
+        { id: 'stock_clerk', label: language === 'ar' ? 'واجهة أمين المخزن' : 'Guichet Stockiste (Entrée/Sortie)', icon: Boxes, path: '/stock' },
         { id: 'categories', label: t('admin.categories'), icon: Layers, path: '/admin/categories' },
         { id: 'inquiries', label: t('admin.inquiries'), icon: MessageCircle, path: '/admin/inquiries' },
         { id: 'settings', label: t('admin.settings'), icon: Settings, path: '/admin/settings' },
